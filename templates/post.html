@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% block content %} 
+{% load static %}
+
+<section class="content">
+    <section class="post_form"><img src="{% static 'img/techis-logo.png' %}"><h1>Home</h1></section>
+    <form class="form" action="/" method="POST" enctype="multipart/form-data"> 
+        {% csrf_token %}
+        <img src="{% static 'img/twitter.png' %}">
+        <input type="text" name="name" placeholder="name" required />
+        <textarea name="body" placeholder="What are you doing" required></textarea>
+        <input type="file" name="picture">
+        <section class="button">
+ 
+        <input type="submit" value="tweet" />
+        </section>
+    </form>
+    <section class="post">
+        <ul>
+        {% for post in post %}
+        <li>
+            <img class="menu_icon js-menu-icon" src="{% static 'img/menu.png' %}" />
+            <div class="menu">
+                <a href="/delete/{{ post.id }}">delete</a>
+                <a href="/edit/{{ post.id }}">edit</a>
+            </div>
+            <div class="logo">
+            {% load static %}
+            <img src="{% static 'img/twitter.png' %}" />
+            </div>
+            <div class="post-input">
+                <div class="name">{{post.name}}</div>
+                <p>{{post.body}}</p>
+                <img class="picture" src="{{post.picture.url}}" alt="">
+                 <a class="like" href="/like/{{post.id}}"><img class="like-btn" src="{% static 'img/heart.png' %}"> {{post.likes}}</a>
+            </div> </li>
+        {% endfor %}
+        </ul>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</section>
+</form>
+{% endblock %}

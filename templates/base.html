@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/png" href="{% static  'img/techis-logo.png' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <title>Twitter Clone</title>
+</head>
+<body>
+
+    {% block content %} {{content}} {% endblock %}
+
+</body>
+</html>
